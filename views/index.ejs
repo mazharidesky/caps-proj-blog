@@ -6,10 +6,64 @@
     <title>Blog Project</title>
     <link rel="stylesheet" href="/styles/output.css" />
   </head>
-  <body>
-    <main class="">
-      <h1 class="">Blog Project</h1>
-      <p>Welcome to the blog project!</p>
+  <body class="bg-red-200">
+    <main>
+      <header class="container py-8 px-8">
+        <div class="text-center font-extrabold text-6xl">
+          <h1>Blog Project</h1>
+        </div>
+      </header>
+      <section>
+        <div class="container py-8 px-8">
+          <div class="flex flex-col gap-6 justify-center items-center">
+            <h2 class="font-bold text-2xl">Posts</h2>
+            <div class="flex flex-col gap-4 w-full">
+              <div class="bg-white p-4 rounded-xl">
+                <% if (locals.title && locals.content) { %>
+                <h3 class="font-semibold text-xl"><%= title %></h3>
+                <p><%= content %></p>
+                <% } else { %>
+                <p>No posts yet</p>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container py-8 px-8">
+        <div class="flex flex-col gap-6 justify-center items-center">
+          <h2 class="font-bold text-2xl">Create a Post</h2>
+          <form action="/submit" method="POST" class="space-y-6 w-full">
+            <div class="flex flex-col">
+              <label class="font-semibold" for="title">Title</label>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                class="rounded-lg py-2 px-2"
+                required
+              />
+            </div>
+            <div class="flex flex-col">
+              <label class="font-semibold" for="content">Content</label>
+              <textarea
+                id="content"
+                name="content"
+                class="rounded-lg px-2 py-2"
+                required
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="bg-white py-4 px-4 border rounded-xl font-semibold hover:bg-slate-300/30 transition-colors duration-300 w-full"
+            >
+              Create Post
+            </button>
+          </form>
+        </div>
+      </section>
     </main>
+    <script></script>
   </body>
 </html>
